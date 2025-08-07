@@ -1,10 +1,9 @@
 HEAD
-<<<<<<< HEAD
+ HEAD
 # Secret files
 HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 89ad5a4 (Removed secrets from render.yaml)
+ HEAD
+89ad5a4 (Removed secrets from render.yaml)
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -214,10 +213,8 @@ __marimo__/
 .env
 __pycache__/
 17486c7 (Initial commit for EasyParcel)
-<<<<<<< HEAD
+ HEAD
 ee03564 (Initial commit for EasyParcel)
-=======
-=======
  HEAD
 .env/
 __pycache__/
@@ -432,5 +429,5 @@ __marimo__/
 HEAD
  00689755c8d9a9e956a6ad0e96b8e43f54203325
   00689755c8d9a9e956a6ad0e96b8e43f54203325
->>>>>>> d4dabe3 (Removed secrets from render.yaml)
->>>>>>> 89ad5a4 (Removed secrets from render.yaml)
+ d4dabe3 (Removed secrets from render.yaml)
+ 89ad5a4 (Removed secrets from render.yaml)
