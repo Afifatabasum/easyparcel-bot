@@ -1,0 +1,7 @@
+#stick{
+    background-color: red;
+    width: 100px;
+    position: sticky;
+    top:100px;
+    
+}

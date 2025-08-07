@@ -1,0 +1,69 @@
+
+h1{
+    font-size: 100px;
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+p{
+    text-align: justify;
+}
+#main
+{
+
+}
+img
+{
+width: 500px;
+}
+@media screen  and(max-width:375px) 
+{
+body
+{
+    background-color: aqua;
+}    
+h1 {
+    font-size: 12px;
+    color: aliceblue;
+}
+h2 
+{
+    font-size: 10px;
+    color: aliceblue;
+}
+#imgs
+{
+    width:100%;
+    margin:auto
+}
+img 
+{
+    width: 49%;
+}
+}
+@media screen  and(max-width:820px) 
+{
+body
+{
+    background-color: antiquewhite;
+}    
+h1 {
+    font-size: 30px;
+    color: azure;
+}
+h2 
+{
+    font-size: 10px;
+    color: aliceblue;
+}
+#imgs
+{
+    width:100%;
+    margin:auto
+}
+img 
+{
+    width:80%;
+}
+}

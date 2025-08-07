@@ -1,0 +1,227 @@
+#top
+{
+    width: 1330px;
+    height: 100px;
+    box-shadow: 0px 0px 2px 0px grey;
+}
+#text
+{
+    font-family: Gabriola;
+    font-size: 100px;
+    font-weight: bolder;
+    position: relative;
+    bottom: 20px;
+    text-align: center;
+}
+#cart img,#search img,#like img{
+    width: 30px;
+    height: 30px;
+}
+#top1
+{
+    display: flex;
+    position: relative;
+    bottom: 135px;
+    left: 1100px;
+    gap: 50px;
+}
+#banner
+{
+    position: relative;
+    right: 1330px;
+    transform: translateX(1330px);
+    transition: all 15s;
+}
+#ban
+{
+    position: relative;
+    top: 30px;
+    left: 60px;
+    height: 500px;
+    width: 1200px;
+}
+#ban img{
+    width: 1200px;
+    height: 500px;
+}
+#t
+{
+    position: relative;
+    left: 780px;
+    bottom: 450px;
+}
+#t1
+{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 130px;
+    color: rgb(77, 48, 48);
+    text-shadow:  2px 4px 5px;
+}
+#t2
+{
+    font-family: Gabriola;
+    font-size: 100px;
+    font-weight: bolder;
+    position: relative;
+    left: 70px;
+    bottom: 120px;
+    z-index: 1;
+    color: rgb(216, 196, 159);
+}
+#t3
+{
+    position: relative;
+    left: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 110px;
+    color: rgb(77, 48, 48);
+    bottom: 220px;
+    text-shadow: 2px 4px 5px;
+}
+#off
+{
+    width: 780px;
+    height: 120px;
+    position: relative;
+    bottom: 180px;
+    right: 170px;
+    font-size: 40px;
+    text-align: center;
+    clip-path: polygon(25% 0%, 75% 0%, 69% 48%, 75% 100%, 25% 100%, 30% 49%);
+    background-image: url(../images/limeroad/winterr.jpg);
+    background-position:50% 60%;
+}
+span{
+    font-size: 60px;
+    color: rgb(77, 48, 48);
+}
+#design
+{
+    width: 200px;
+    height: 500px;
+    position: relative;
+    bottom: 470px;
+    background-color: rgb(77, 48, 48);
+    left: 100px;
+}
+#dtext
+{
+    color: rgb(124, 73, 73);
+    position: relative;
+    top: 30px;
+    left: 50px;
+    font-size: 20px;
+}
+#col
+{
+    position: relative;
+    right: 20px;
+    color: white;
+    font-size: 20px;
+}
+#design img{
+    width: 200px;
+    height: 200px;
+}
+#dt
+{
+    border-radius: 20px;
+    width: 150px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 30px;
+    background-color: wheat;
+    text-align: center;
+    position: relative;
+    left: 25px;
+    top: 140px;
+}
+#shop
+{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(5,250px);
+    grid-template-rows: repeat(15,380px); 
+    position: relative;
+    bottom: 400px; 
+}
+#s1
+{
+    background-color: white;
+}
+#simage img{
+    width: 250px;
+    height: 300px;
+}
+#srate
+{
+    width:100px;
+    height:30px;
+    position: relative;
+    bottom: 50px;
+    left: 10px;
+    border-radius: 20px;
+    background-color: white;
+    text-align: justify;
+    display: flex;
+    gap: 10px;
+}
+#si1,#si2,#sr
+{
+    position: relative;
+    top: 5px;
+    left: 10px;
+    font-weight: bolder;
+    width: 20px;
+    height: 20px;
+}
+#wishlist
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    position: relative;
+    background-color: white;
+    bottom: 60px;
+    left: 200px;
+
+}
+#wishlist img{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 6px;
+    left: 5px;
+}
+#sprice
+{
+    position: relative;
+    left: 20px;
+    bottom: 60px;
+    font-weight: bolder;
+}
+s
+{
+    color: rgb(54, 54, 54);
+    font-weight: lighter;
+}
+#sp1
+{
+    font-size: 20px;
+    color: rgb(149, 219, 42);
+}
+#stext
+{
+    position: relative;
+    bottom: 60px;
+    left: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#st
+{
+    font-weight: bold;
+    position: relative;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    bottom: 18px;
+    left: 20px;
+}

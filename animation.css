@@ -1,0 +1,23 @@
+#main
+{
+    width: 200px;
+    height: 200px;
+    background-color: antiquewhite;
+    animation-name: fly;
+    animation-duration: 20s;
+    animation-iteration-count: 3;
+    animation-direction: alternate-reverse;
+}
+#main:hover
+{
+    animation-play-state: running;
+}
+@keyframes fly
+{
+    10%{background-color: aqua;width: 300px; }
+    30%{background-color: rgb(138, 184, 155);width: 300px; }
+    50%{background-color: rgb(20, 83, 83);width: 300px; }
+    70%{background-color: antiquewhite;width: 300px; }
+    90%{background-color: darkcyan;width: 300px; }
+    100%{background-color:greenyellow;width: 300px; }
+}

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modest Luxe - Abayas</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background: #fff;
+      color: #333;
+    }
+    /* Navbar Container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  flex-wrap: wrap;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: 'Georgia', serif;
+  color: white;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+}
+
+.nav-links a:hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #ccc;
+  bottom: -4px;
+  left: 0;
+}
+
+/* Cart Icon */
+.cart-icon {
+  font-size: 1.2rem;
+}
+
+/* Search Bar */
+.search-bar input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  width: 200px;
+}
+
+/* Hamburger Icon */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    background-color: #1a1a1a;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    display: none;
+    padding: 1rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .search-bar {
+    order: 3;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.cart-icon {
+  position: relative;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #27ae60;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+    .hero {
+      background: #f8f8f8;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #777;
+    }
+    /* Filter Bar */
+    .filter-bar {
+      text-align: center;
+      margin: 1rem 0 2rem;
+    }
+    .filter-bar button {
+  background: #f0f0f0;
+  border: 2px solid #ccc;
+  padding: 0.6rem 1.4rem;
+  margin: 0 0.4rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: 
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+  user-select: none;
+}
+.filter-bar button:hover {
+  background: #ddd;
+  color: #000;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: scale(1.05);
+}
+.filter-bar button.active {
+  background: #333;
+  border-color: #333;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  transform: scale(1.05);
+}
+
+    /* Products Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 2rem 3rem;
+    }
+    .product-card {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      background: white;
+      transition: transform 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .product-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .product-card h3 {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+    .product-card p {
+      color: #27ae60;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      nav {
+        text-align: center;
+        width: 100%;
+      }
+      .search-bar {
+        width: 100%;
+        justify-content: center;
+      }
+      .search-bar input {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    
+    footer {
+      background: #111;
+      color: #ddd;
+      padding: 3rem 2rem 1rem;
+      font-size: 0.9rem;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-container > div {
+      flex: 1 1 200px;
+      min-width: 200px;
+    }
+    .footer-container h3 {
+      color: #27ae60;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    .footer-about p {
+      line-height: 1.5;
+    }
+    .footer-links ul,
+    .footer-service ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links ul li,
+    .footer-service ul li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-links ul li a,
+    .footer-service ul li a,
+    .footer-social a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links ul li a:hover,
+    .footer-service ul li a:hover,
+    .footer-social a:hover {
+      color: #27ae60;
+    }
+    .footer-social p {
+      margin-bottom: 1rem;
+    }
+    .social-links a {
+      margin: 0 0.3rem;
+      font-weight: 600;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      border-top: 1px solid #333;
+      padding-top: 1rem;
+      font-size: 0.8rem;
+      color: #666;
+    }
+    @media (max-width: 700px) {
+      .footer-container {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header class="navbar">
+  <div class="logo">Modest Luxe</div>
+
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="abayas.html">Abayas</a>
+    <a href="hijabs.html">Hijabs</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html" class="cart-icon">🛒</a>
+  </nav>
+
+  <form class="search-bar">
+    <input type="text" placeholder="Search abayas..." />
+  </form>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+</header>
+  <section class="hero">
+    <h1>Modest Luxe</h1>
+    <p>where modesty meets elegance</p>
+  </section>
+
+  <!-- Filter Buttons -->
+  <section class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="casual">Casual</button>
+    <button class="filter-btn" data-filter="party">Party</button>
+    <button class="filter-btn" data-filter="premium">Premium</button>
+  </section>
+
+  <section class="products">
+    <div class="product-card" data-category="casual">
+      <a href="product.html?id=1">
+  <img src="./a1.webp" alt="Abaya 1" />
+</a>
+      <h3>Classic Black Abaya</h3>
+      <p>₹1,999</p>
+    </div>
+    <div class="product-card" data-category="premium">
+      <a href="product.html?id=2">
+        <img src="./a2.webp" alt="Abaya 2" />
+      </a>
+      <h3>Premium Lace Abaya</h3>
+      <p>₹2,499</p>
+    </div>
+    <div class="product-card" data-category="casual">
+      <a href="product.html?id=3">
+        <img src="./a3.webp" alt="Abaya 3" />
+      </a>
+      <h3>Everyday Wear Abaya</h3>
+      <p>₹1,799</p>
+    </div>
+    <div class="product-card" data-category="party">
+      <a href="product.html?id=4">
+        <img src="./a4.webp" alt="Abaya 4" />
+      </a>
+      <h3>Embroidered Abaya</h3>
+      <p>₹2,199</p>
+    </div>
+    <div class="product-card" data-category="casual">
+      <a href="product.html?id=5">
+        <img src="./a3.webp" alt="Abaya 5" />
+      </a>
+      <h3>Front Open Abaya</h3>
+      <p>₹2,099</p>
+    </div>
+    <div class="product-card" data-category="party">
+      <a href="product.html?id=6">  
+        <img src="./a4.webp" alt="Abaya 6" />
+      </a>
+      <h3>Velvet Party Abaya</h3>
+      <p>₹2,899</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Modest Luxe. All rights reserved.</p>
+    <div>
+      <a href="#">Instagram</a> |
+      <a href="#">Facebook</a> |
+      <a href="#">Email</a>
+    </div>
+  </footer>
+
+  <footer>
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>About Modest Luxe</h3>
+      <p>At Modest Luxe, we blend modesty with elegance to bring you the finest collection of abayas crafted with care and style. Discover your perfect look for every occasion.</p>
+    </div>
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="abaya.html">Abayas</a></li>
+        <li><a href="#">Hijabs</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+    <div class="footer-service">
+      <h3>Customer Service</h3>
+      <ul>
+        <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Returns & Exchanges</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <h3>Follow Us</h3>
+      <p>Stay connected with us on social media for latest updates and offers!</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">Instagram</a> |
+        <a href="#" aria-label="Facebook">Facebook</a> |
+        <a href="#" aria-label="Twitter">Twitter</a> |
+        <a href="#" aria-label="Email">Email</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Modest Luxe. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script>
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const products = document.querySelectorAll('.product-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        products.forEach(product => {
+          if (filter === 'all' || product.getAttribute('data-category') === filter) {
+            product.style.display = 'block';
+          } else {
+            product.style.display = 'none';
+          }
+        });
+      });
+    });
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+  }
+  function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let totalCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+  let cartIcon = document.querySelector('.cart-icon');
+
+  // Remove old badge if exists
+  const oldBadge = document.querySelector('.cart-badge');
+  if (oldBadge) oldBadge.remove();
+
+  if (totalCount > 0) {
+    const badge = document.createElement('span');
+    badge.classList.add('cart-badge');
+    badge.textContent = totalCount;
+    cartIcon.appendChild(badge);
+  }
+}
+
+// Call it on page load
+document.addEventListener('DOMContentLoaded', updateCartCount);
+
+
+  </script>
+
+</body>
+</html>

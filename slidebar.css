@@ -1,0 +1,19 @@
+#main
+{
+    border: solid;
+    width: 100vw;
+    height: 40vh;
+    animation-name: slidee;
+    animation-duration: 13s;
+    animation-iteration-count: infinite;
+}
+@keyframes slidee
+{
+    0%{background-image: url(../images/food1.jpg);background-size: 100% 100%;}
+    20%{background-image: url(../images/food2.jfif);background-size: 100% 100%; }
+    40%{background-image: url(../images/coffeemaker1.jpg);background-size: 100% 100%; }
+    60%{background-image: url(../images/flower.jpeg); background-size: 100% 100%;}
+    80%{background-image: url(../images/food2.jfif); background-size: 100% 100%;}
+    100%{background-image: url(../images/food1.jpg); background-size: 100% 100%;}
+
+}

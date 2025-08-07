@@ -1,0 +1,362 @@
+#top
+{
+ width: 1335px;
+ height: 450px;
+ box-shadow: 0px 0px 2px 0px grey;
+}
+#menu img
+{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    top: 20px;
+    left: 30px;
+}
+#text
+{
+    position: relative;
+    bottom: 50px;
+    font-size: 80px;
+    left : 200px;
+}
+#notify img
+{
+    width: 50px;
+    height: 50px;
+    line-height: 40px;
+    position: relative;
+    bottom: 120px;
+    left: 1100px;
+}
+#like img
+{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: 1200px;
+    bottom: 170px;
+}
+#cart img
+{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    left: 1280px;
+    bottom: 220px;
+}
+#search
+{
+    width: 1330px;
+    height: 40px;
+    border:solid 2px greenyellow;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    bottom: 200px;
+}
+#s0 img
+{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+#s
+{
+    font-size: 20px;
+    position: relative;
+    bottom: 15px;
+    left: 50px;
+    color: grey;
+}
+#mic img
+{
+    width: 30px;
+    height: 30px;
+   position: relative;
+   bottom: 240px;
+   left: 1300px;
+}
+#category
+{
+    width: 500px;
+    border: solid 1px whitesmoke; 
+    font-size:40px ;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    position: relative;
+    bottom: 200px;
+}
+#w
+{
+    color: greenyellow;
+}
+#all
+{
+    width: 150px;
+    height: 150px;
+    border: solid 2px greenyellow;
+    border-radius: 100px; 
+    position: relative;
+    bottom: 170px; 
+    text-align: center; 
+}
+#winter,#kurtas,#tops,#dresses,#ethnic,#sarees
+{
+    width: 150px;
+    height: 150px;
+    border-radius: 20px; 
+    position: relative;
+    bottom: 170px; 
+    text-align: center; 
+}
+#all img
+{
+   width: 150px;
+   height: 150px;
+   border-radius: 100px;
+}
+#a1
+{
+    font-size: 25px;
+    position: relative;
+    top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#shopping
+{
+    display: flex;
+    gap: 40px;
+}
+#mid
+{
+    width: 1325px;
+    height: 800vh;
+    position: relative;
+    top: 20px;
+}
+#picks
+{
+    font-size: 50px;
+}
+#kurta
+{
+    width: 1350px;
+    height: 1250px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#k1 ,#k2 ,#k3, #k4, #k5, #k6
+{
+    width: 430px;
+    height: 600px;
+    border-radius: 20px;
+}
+#k1 img,#k2 img,#k3 img,#k4 img,#k5 img,#k6 img
+{
+   width: 430px;
+   height: 600px;
+   border-radius: 20px;
+   position:  relative;
+   top: 20px;
+   left: 2px;
+}
+#k1text
+{
+    width: 400px;
+    height: 150px;
+    border-radius: 30px;
+    position: relative;
+    bottom: 150px;
+    left: 15px;
+    background-color: white;
+}
+#name
+{
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+    position: relative;
+    top: 20px;
+}
+hr{
+    position: relative;
+    top: 20px;
+    width: 300px;
+}
+#price
+{
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+    top: 25px;
+}
+
+
+#banner
+{
+    position: relative;
+    top: 80px;
+    left: 150px;
+    width: 1050px;
+    height: 320px;
+    overflow: hidden;
+}
+#ban
+{
+    width: 1050px;
+    height: 320px;
+    display: flex;
+    animation-name: bann;
+    animation-duration: 20s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes bann
+{
+    25% {transform: translatex(-1050px);}
+    50% {transform: translatex(-2100px);}
+    75% {transform: translatex(-3150px);}
+    100% {transform: translatex(-4200px);}
+}
+#ban img{
+    width: 1050px;
+    height: 320px;
+}
+#poster
+{
+   width: 1330px;
+   position: relative; 
+   top: 100px;
+}
+#p1 img,#p2 img,#p3 img
+{
+    width: 1330px;
+    height: 640px;
+}
+#p1
+{
+    position: relative;
+    top: 20px;
+}
+#shopnow
+{
+    width:1350px;
+    height: 1500px;
+    display: grid;
+    grid-template-columns: repeat(3,400px);
+    grid-template-rows: repeat(2,700px);
+    gap: 50px;
+    position: relative;
+    top: 100px;
+    left: 25px;
+}
+#simage img
+{
+    width: 400px;
+    height: 550px;
+}
+#stext
+{
+    font-size: 50px;
+    text-align: center;
+    position: relative;
+    top: 30px;
+}
+#sbox
+{
+    width: 200px;
+    height: 40px;
+    border: solid 2px;
+    position: relative;
+    left: 100px;
+    top:50px;
+}
+#st
+    {
+        position: relative;
+       font-size: 30px;
+        left: 15px;
+        font-weight: bold;
+    }
+#shop
+{
+    position: relative;
+    bottom: 35px;
+    left: 150px;
+    width: 40px;
+    height: 40px;
+}
+#bottom
+{
+    width: 1330px;
+    height: 250px;
+    column-gap: 20px;
+    column-count: 7;
+    list-style: none;
+    font-size: 20px;
+    position: relative;
+    background-color: rgb(255,255,255);
+    top: 100px;
+}
+span
+{
+    background-color: rgb(201, 235, 151);
+    font-size: 25px;
+    font-family: Gabriola;
+    font-weight: bold;
+    border-radius: 2px;
+}
+#bottom1 img
+{
+    width: 30px;
+    height: 30px;
+}
+#bottom1
+{
+    display: flex;
+    gap: 20px;
+    position: relative;
+    top: 70px;
+    left: 1130px;
+    width: 200px;
+    height: 30px;
+}/*
+#womenh
+{
+    list-style: none;
+    position: absolute;
+    top: 300px;
+    left: 20px;
+    width: 200px;
+    height: 500px;
+    background-color: rgb(255,255,255);
+    display: none;
+}
+#womenh li
+{
+    width: 200px;
+    height: 50px;
+    font-size: 30px;
+    font-family: Gabriola;
+    box-shadow: 0px 0px 2px 0px rgb(218, 208, 208);
+}
+#w:hover #womenh
+{
+    display: block;
+}
+    <div id="womenh">
+        <li>Ethnic</li>
+        <li>Western</li>
+        <li>Brands</li>
+        <li>Lowest Price</li>
+        <li>Trending</li>
+        <li>Best Seller</li>
+        <li>Footwear</li>
+        <li>Accessories</li>
+        <li>Beauty</li>
+        <li>Dupatta</li>
+    </div>*/

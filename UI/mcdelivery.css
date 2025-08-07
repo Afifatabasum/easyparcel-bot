@@ -1,0 +1,475 @@
+#top
+{
+    width: 1350px;
+    height: 80px;
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+    background-color: white;
+}
+#logo img
+{
+    width: 80px;
+    position: absolute;
+    left: 80px;
+}
+#del
+{
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    position: absolute;
+    left: 250px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+}
+#del img
+{
+    position: absolute;
+    left: 20px;
+    top: 10px;
+}
+#text
+{
+    position: absolute;
+    left: 70px;
+    font-weight:bolder;
+    font-family: Arial, Helvetica, sans-serif;
+}
+input
+{
+    width: 250px;
+    height: 40px;
+}
+#searching
+{
+    font-size: 20px;
+    position: absolute;
+    left: 500px;
+    top: 10px;
+}
+p
+{
+    font-weight: bolder;
+    font-size: 20px;
+}
+#top1
+{
+    width: 350px;
+    position: absolute;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+#banner
+{
+    height: 250px;
+    position: relative;
+    top: 90px;
+    background-color: black;
+}
+#ban img
+{
+    width: 1335px;
+    height: 200px;
+}
+#bann
+{
+    position: relative;
+    top: 10px;
+    left: 550px;
+}
+#ban1
+{
+    width: 130px;
+    height: 80px;
+    border: solid 1px white;
+}
+#ban2
+{
+    width: 100px;
+    height: 60px;
+    border: solid 1px white;
+}
+#name
+{
+    height: 280px;
+    background-color: floralwhite;
+}
+#name1
+{
+    position: relative;
+    top: 120px;
+    left: 170px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+}
+#button1,#button2,#button3
+{
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 30px;
+    position: relative;
+    border: hidden;
+    top: 130px;
+    left: 170px;
+}
+#sum1,#sum2,#sum3
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+#name2 img 
+{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    right: 15px;
+    top: 5px;
+}
+
+#main
+{
+    width: 1350px;
+    height: 1000px;
+    display: grid;
+    grid-template-columns: 200px 700px 400px;
+    gap: 20px;
+    background-color: beige;
+}
+.sub1
+{
+    display: grid;
+    grid-template-columns: 200px;
+    grid-template-rows: repeat(7,70px);
+    background-color: white;
+}
+#subb1
+{
+    text-align: center;
+    position: sticky;
+    top: 100px;
+    width: 200px;
+    height: 550px;
+}
+button
+{
+    background-color: snow;
+    height: 70px;
+    line-height: 70px;
+    gap: 20px;
+    width: 200px;
+    box-shadow: 2px 2px 2px 2px silver;
+    border: hidden;
+}
+button img 
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.sub2
+{
+    display: grid;
+    grid-template-columns: repeat(2,350px);
+    grid-template-rows: repeat(7,350px);
+    grid-gap: 10px;
+    grid-column-gap: 20px;
+    grid-row-gap: 50px;
+    border: 1px;
+    width: 700px;
+    background-color: white;
+}
+#content1
+{
+    width:300px;
+    height: 350px;
+    padding:10px;
+    border-radius:20px;
+    box-shadow:3px 3px 3px 0px;
+}
+#img1 img{
+width: 280px;
+border-radius: 15px;
+}
+#offer
+{
+    background-color: red;
+    color: white;
+    position: relative;
+    right: 10px;
+    bottom: 200px;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bolder;
+}
+#dish
+{
+    font-weight: bolder;
+    width: 220px;
+}
+#content2
+{
+position: relative;
+bottom: 150px;
+left: 30px;
+width: 300px;
+}
+
+#cart
+{
+    width: 250px;
+    height: 30px;
+    line-height: 30px;
+    background-color: orange;
+    text-align: center;
+    font-weight: bolder;
+}
+#dishes
+{
+white-space: nowrap;   
+height: 35px;
+width: 200px;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+#price
+{
+    font-weight: bolder;
+    position: relative;
+    bottom: 10px;
+}
+#ek
+{
+    display: grid;
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+#do
+{
+    display: grid;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+#teen
+{
+    display: grid;
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+#chaar
+{
+    display: grid;
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+#paanch
+{
+    display: grid;
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+#che
+{
+    display: grid;
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+#saat
+{
+    display: grid;
+    grid-column: 1/2;
+    grid-row: 4/5;
+}
+#aat
+{
+    display: grid;
+    grid-column: 2/3;
+    grid-row: 4/5;
+}
+#now
+{
+    display: grid;
+    grid-column: 1/2;
+    grid-row: 5/6;
+}
+#das
+{
+    display: grid;
+    grid-column: 2/3;
+    grid-row: 5/6;
+}
+#ek ek
+{
+    display: grid;
+    grid-column: 1/2;
+    grid-row: 6/7;
+}
+#ek do 
+{
+    display: grid;
+    grid-column: 2/3;
+    grid-row: 6/7;
+}
+#ek teen 
+{
+    display: grid;
+    grid-column: 1/2;
+    grid-row: 7/8;
+}
+.sub3
+{
+    background-color: white;
+}
+#stick
+{
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px;
+    text-align: center;
+    position: sticky;
+    top: 100px;
+    left: 100px;
+}
+
+#body3
+{
+    position: relative;
+    top: 1750px;
+    text-align: justify;
+    padding: 70px;
+    gap: 50px;
+}
+#para
+{
+    font-weight: lighter;
+    font-size: 18px;
+}
+#bottom1
+{
+    position: relative;
+    top: 1700px;
+    background-color: orange;
+    width: 1350px;
+    height: 350px;
+}
+#qr img
+{
+    background-color: white;
+    border: solid 10px white;
+    width: 150px;
+    height: 150px;
+}
+#qr
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 13px;
+    color: white;
+    position: relative ;
+    top: 50px;
+    left: 150px;
+    width: 150px;
+    height: 200px;
+}
+#qr1
+{
+    position: relative;
+    bottom: 150px;
+    left: 400px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+}
+#qr1 h2
+{
+    color: orangered;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#download
+{
+    position: relative;
+    bottom: 100px;
+    left: 400px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    border-radius: 25px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    width: 250px;
+    height: 50px;
+    line-height: 50px;
+}
+#download a
+{
+    color: white;
+    text-decoration: none;
+}
+#bottom2
+{
+    position: relative;
+    top: 1700px;
+    background-color: black;
+    width: 1350px;
+    height: 250px;
+}
+#b1
+{
+    position: relative;
+    left: 70px;
+    top: 30px;
+    font-weight: bolder;
+    width: 700px;
+    column-gap: 20px;
+    column-count: 8;
+    column-width: 150px;
+    list-style: none;
+    color: white;
+}
+#b2
+{
+    position: relative;
+    top: 50px;
+    left: 70px;
+    color: white;
+    font-weight: lighter;
+}
+#b3
+{
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    position: relative;
+    top: 60px;
+    left: 70px;
+}
+#b4
+{
+    position: relative;
+    top: 50px;
+    left: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+#b4 img{
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+
+

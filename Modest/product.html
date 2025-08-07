@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Details - Modest Luxe</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<style>
+    /* Reset some default styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 1rem 2rem;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  user-select: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 2rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #27ae60; /* fresh green accent */
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Main content layout */
+.product-details {
+  max-width: 900px;
+  margin: 3rem auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  display: flex;
+  gap: 3rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.product-image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.product-image img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.product-image img:hover {
+  transform: scale(1.05);
+}
+
+.product-info {
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.product-info h1 {
+  font-size: 2rem;
+  margin-bottom: 0.2rem;
+  color: #111;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #27ae60;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+label {
+  font-weight: 600;
+  color: #333;
+}
+
+select#size {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 150px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+select#size:hover, select#size:focus {
+  border-color: #27ae60;
+  outline: none;
+}
+
+button.add-to-cart {
+  background-color: #27ae60;
+  border: none;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+}
+
+button.add-to-cart:hover {
+  background-color: #219150;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: #555;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #27ae60;
+}
+
+/* Cart icon styles */
+.cart-icon {
+  position: relative;
+  font-size: 1.6rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #27ae60;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .product-details {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+  }
+  
+  .product-image, .product-info {
+    flex: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .product-info {
+    margin-top: 1.5rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #1a1a1a;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+  }
+
+  .nav-links a {
+    margin-left: 0;
+  }
+}
+
+
+
+
+    
+    .cart-icon {
+  position: relative;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #27ae60;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+</style>
+<body>
+  <header class="navbar">
+    <div class="logo">Modest Luxe</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">Abayas</a>
+      <a href="#">Hijabs</a>
+      <a href="#">Contact</a>
+      <a href="#" class="cart-icon">🛒</a>
+    </nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <main class="product-details">
+    <div class="product-image">
+      <img id="product-img" src="" alt="Product Image" />
+    </div>
+    <div class="product-info">
+      <h1 id="product-title">Product Name</h1>
+      <p class="price" id="product-price">₹0</p>
+      <p class="description" id="product-desc">Product description goes here.</p>
+
+      <label for="size">Size:</label>
+      <select id="size">
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+      </select>
+
+      <br /><br />
+      <button class="add-to-cart">Add to Cart</button>
+      <br /><br />
+      <a href="index.html" class="back-link">← Back to Shop</a>
+    </div>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+
+    // Sample Product Data (you can add more)
+    const products = {
+      1: {
+        title: "Classic Black Abaya",
+        price: "₹2,499",
+        description: "This elegant black abaya features a flowing silhouette and subtle detailing, perfect for everyday wear or special occasions.",
+        image: "images/abaya1.jpg"
+      },
+      2: {
+        title: "Elegant Navy Abaya",
+        price: "₹2,799",
+        description: "A sophisticated navy abaya with a soft chiffon overlay, perfect for formal occasions or Eid celebrations.",
+        image: "images/abaya2.jpg"
+      },
+      3: {
+        title: "Embroidered Grey Abaya",
+        price: "₹2,599",
+        description: "Stylish grey abaya with intricate embroidery on sleeves and hem, balancing tradition with trend.",
+        image: "images/abaya3.jpg"
+      }
+    };
+
+    // Get product ID from URL (like ?id=2)
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    // If product exists, update the page
+    if (products[productId]) {
+      const product = products[productId];
+      document.getElementById('product-title').textContent = product.title;
+      document.getElementById('product-price').textContent = product.price;
+      document.getElementById('product-desc').textContent = product.description;
+      document.getElementById('product-img').src = product.image;
+      document.getElementById('product-img').alt = product.title;
+    } else {
+      document.querySelector('.product-details').innerHTML = "<p>Product not found.</p>";
+    }
+    const addToCartBtn = document.querySelector('.add-to-cart');
+
+addToCartBtn.addEventListener('click', () => {
+  const sizeSelect = document.getElementById('size');
+  const selectedSize = sizeSelect.value;
+
+  const cartItem = {
+    id: productId,
+    title: products[productId].title,
+    price: products[productId].price,
+    size: selectedSize,
+    quantity: 1,
+    image: products[productId].image
+  };
+
+  // Get existing cart from localStorage or create new array
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Check if product with same id and size already exists in cart
+  const existingIndex = cart.findIndex(item => item.id === cartItem.id && item.size === cartItem.size);
+
+  if (existingIndex > -1) {
+    // Increase quantity if already in cart
+    cart[existingIndex].quantity += 1;
+  } else {
+    cart.push(cartItem);
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`${cartItem.title} (Size: ${selectedSize}) added to cart!`);
+});
+
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let totalCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+  let cartIcon = document.querySelector('.cart-icon');
+
+  // Remove old badge if exists
+  const oldBadge = document.querySelector('.cart-badge');
+  if (oldBadge) oldBadge.remove();
+
+  if (totalCount > 0) {
+    const badge = document.createElement('span');
+    badge.classList.add('cart-badge');
+    badge.textContent = totalCount;
+    cartIcon.appendChild(badge);
+  }
+}
+
+// Call it on page load
+document.addEventListener('DOMContentLoaded', updateCartCount);
+
+
+  </script>
+</body>
+</html>
