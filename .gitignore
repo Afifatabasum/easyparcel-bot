@@ -1,0 +1,14 @@
+# Secret files
+.env
+*.yaml
+
+# Python build/cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# System files
+.DS_Store
+
+# Logs
+*.log
