@@ -15,8 +15,9 @@ def home():
 
 @app.route("/whatsapp", methods=["POST"])
 def whatsapp_webhook():
-    incoming_msg = request.form.get("Body")
-    sender = request.form.get("From")
+    data = request.get_json()
+    incoming_msg = data.get("Body")   
+    sender = data.get("From")         
 
     parsed = parse_message(incoming_msg)
 
