@@ -4,13 +4,13 @@ from courier_api import get_rates
 from twilio_handler import send_whatsapp
 import os
 from dotenv import load_dotenv
+import re
 
 load_dotenv()
-
 app = Flask(__name__)
 
-# Session storage for each user
-sessions = {}  # { sender_number: { pickup, delivery, weight, type } }
+# Store user conversation data
+user_data = {}
 
 @app.route('/')
 def home():
@@ -21,55 +21,58 @@ def whatsapp_webhook():
     incoming_msg = request.form.get("Body", "").strip()
     sender = request.form.get("From")
 
-    # Initialize session if new user
-    if sender not in sessions:
-        sessions[sender] = {
-            "pickup": None,
-            "delivery": None,
-            "weight": None,
-            "type": None
-        }
-        send_whatsapp(sender, "🙏 Thank you for connecting with EasyParcel! 🚚")
+    # If first message from user, initialize session
+    if sender not in user_data:
+        user_data[sender] = {}
+        welcome_msg = (
+            "Thank you for connecting with EasyParcel!\n\n"
+            "📦 To get courier options, please send the following details:\n"
+            "Pickup:\n"
+            "Delivery:\n"
+            "Weight:\n"
+            "Parcel Type: (optional)"
+        )
+        send_whatsapp(sender, welcome_msg)
+        return "OK", 200
 
-    # Parse current message for any of the fields
-    detected_data = parse_message(incoming_msg)
+    # Check if user is booking
+    book_match = re.search(r"book with\s+(.+)", incoming_msg, re.IGNORECASE)
+    if book_match and "pickup" in user_data[sender] and "delivery" in user_data[sender] and "weight" in user_data[sender]:
+        courier_name = book_match.group(1).strip()
+        details = user_data[sender]
+        confirmation = (
+            f"✅ Booking confirmed!\n\n"
+            f"You are sending a parcel from *{details['pickup']}* to *{details['delivery']}* "
+            f"weighing *{details['weight']} kg* via *{courier_name}*.\n\n"
+            f"📦 Thank you for choosing EasyParcel!"
+        )
+        send_whatsapp(sender, confirmation)
+        user_data.pop(sender, None)  # clear session after booking
+        return "OK", 200
 
-    # Update session with any detected fields
-    for key, value in detected_data.items():
-        if value and not sessions[sender][key]:
-            sessions[sender][key] = value
+    # Parse current message
+    parsed = parse_message(incoming_msg)
+    for key, value in parsed.items():
+        user_data[sender][key] = value
 
-    # Check which fields are still missing
-    missing_fields = [k for k, v in sessions[sender].items() if not v]
+    # Determine missing required fields (parcel type optional)
+    required_fields = ["pickup", "delivery", "weight"]
+    missing = [f for f in required_fields if f not in user_data[sender]]
 
-    if missing_fields:
-        # Create human-friendly missing fields list
-        field_prompts = {
-            "pickup": "Pickup address",
-            "delivery": "Delivery address",
-            "weight": "Weight in kg",
-            "type": "Parcel type"
-        }
-        missing_names = [field_prompts[f] for f in missing_fields]
-        reply = f"Got it ✅ — now please share your {', '.join(missing_names)}."
-        send_whatsapp(sender, reply)
-    else:
-        # All fields collected — show courier options
-        options = get_rates(sessions[sender])
-        reply = "📦 Available Courier Options:\n"
-        for opt in options:
-            reply += f"\n✅ {opt['courier']} - ₹{opt['cost']} ({opt['eta']})"
-        reply += "\n\nReply with 'Book with [CourierName]' to confirm."
-        send_whatsapp(sender, reply)
+    if missing:
+        ask_msg = "Got it. Please send the following details:\n" + "\n".join(missing)
+        send_whatsapp(sender, ask_msg)
+        return "OK", 200
 
-        # Reset session for new booking
-        sessions[sender] = {
-            "pickup": None,
-            "delivery": None,
-            "weight": None,
-            "type": None
-        }
+    # All required details present → get courier rates
+    details = user_data[sender]
+    options = get_rates(details)
+    reply = "📦 Available Courier Options:\n"
+    for opt in options:
+        reply += f"\n✅ {opt['courier']} - ₹{opt['cost']} ({opt['eta']})"
+    reply += "\n\nReply with 'Book with [CourierName]' to confirm."
 
+    send_whatsapp(sender, reply)
     return "OK", 200
 
 
