@@ -13,8 +13,9 @@ def parse_message(msg):
             elif 'delivery' in lower or lower.startswith('to'):
                 data['delivery'] = line.split(':')[-1].strip()
             elif 'weight' in lower:
-                weight_str = line.split(':')[-1].strip().replace('kg', '').strip()
-                data['weight'] = float(weight_str)
+                weight_str = re.search(r"(\d+(?:\.\d+)?)", line)
+                if weight_str:
+                    data['weight'] = float(weight_str.group(1))
             elif 'type' in lower or 'parcel' in lower:
                 data['type'] = line.split(':')[-1].strip()
 
@@ -30,7 +31,7 @@ def parse_message(msg):
                 data['delivery'] = delivery_match.group(2).strip()
 
         if 'weight' not in data:
-            weight_match = re.search(r"(\d+(?:\.\d+)?)\s*(kg|kilograms?)", msg, re.IGNORECASE)
+            weight_match = re.search(r"(\d+(?:\.\d+)?)\s*(kg|kilograms?)?", msg, re.IGNORECASE)
             if weight_match:
                 data['weight'] = float(weight_match.group(1))
 
