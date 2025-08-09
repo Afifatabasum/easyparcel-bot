@@ -3,12 +3,14 @@ from parser import parse_message
 from courier_api import get_rates
 from twilio_handler import send_whatsapp
 import os
-import re
 from dotenv import load_dotenv
 
 load_dotenv()
 
 app = Flask(__name__)
+
+# Session storage for each user
+sessions = {}  # { sender_number: { pickup, delivery, weight, type } }
 
 @app.route('/')
 def home():
@@ -19,60 +21,56 @@ def whatsapp_webhook():
     incoming_msg = request.form.get("Body", "").strip()
     sender = request.form.get("From")
 
-    # Step 1: Always send welcome + instructions
-    welcome_msg = (
-        "🙏 Thank you for connecting with EasyParcel!\n\n"
-        "📦 To get courier options, please send the following details:\n"
-        "Pickup: <Your pickup city>\n"
-        "Delivery: <Your delivery city>\n"
-        "Weight: <Weight in kg>\n"
-        "Type: <Parcel type>\n\n"
-        "Example:\nPickup: Chennai\nDelivery: Bangalore\nWeight: 2kg\nType: Documents"
-    )
-    send_whatsapp(sender, welcome_msg)
+    # Initialize session if new user
+    if sender not in sessions:
+        sessions[sender] = {
+            "pickup": None,
+            "delivery": None,
+            "weight": None,
+            "type": None
+        }
+        send_whatsapp(sender, "🙏 Thank you for connecting with EasyParcel! 🚚")
 
-    # Step 2: Try to detect details even if format is not exact
-    parsed = parse_message(incoming_msg)
-    if not parsed:
-        parsed = smart_parse(incoming_msg)  # Fallback to flexible parsing
+    # Parse current message for any of the fields
+    detected_data = parse_message(incoming_msg)
 
-    # Step 3: If details found, send courier options
-    if parsed and all(k in parsed for k in ["pickup", "delivery", "weight", "type"]):
-        options = get_rates(parsed)
+    # Update session with any detected fields
+    for key, value in detected_data.items():
+        if value and not sessions[sender][key]:
+            sessions[sender][key] = value
+
+    # Check which fields are still missing
+    missing_fields = [k for k, v in sessions[sender].items() if not v]
+
+    if missing_fields:
+        # Create human-friendly missing fields list
+        field_prompts = {
+            "pickup": "Pickup address",
+            "delivery": "Delivery address",
+            "weight": "Weight in kg",
+            "type": "Parcel type"
+        }
+        missing_names = [field_prompts[f] for f in missing_fields]
+        reply = f"Got it ✅ — now please share your {', '.join(missing_names)}."
+        send_whatsapp(sender, reply)
+    else:
+        # All fields collected — show courier options
+        options = get_rates(sessions[sender])
         reply = "📦 Available Courier Options:\n"
         for opt in options:
             reply += f"\n✅ {opt['courier']} - ₹{opt['cost']} ({opt['eta']})"
         reply += "\n\nReply with 'Book with [CourierName]' to confirm."
         send_whatsapp(sender, reply)
 
+        # Reset session for new booking
+        sessions[sender] = {
+            "pickup": None,
+            "delivery": None,
+            "weight": None,
+            "type": None
+        }
+
     return "OK", 200
-
-
-def smart_parse(message):
-    """Flexible parser to detect pickup, delivery, weight, and type from free text"""
-    data = {}
-
-    # Pickup city
-    pickup_match = re.search(r"(pickup|from)\s*[:\-]?\s*([a-zA-Z\s]+)", message, re.IGNORECASE)
-    if pickup_match:
-        data["pickup"] = pickup_match.group(2).strip()
-
-    # Delivery city
-    delivery_match = re.search(r"(delivery|to)\s*[:\-]?\s*([a-zA-Z\s]+)", message, re.IGNORECASE)
-    if delivery_match:
-        data["delivery"] = delivery_match.group(2).strip()
-
-    # Weight (now works for integer or float, with or without "kg")
-    weight_match = re.search(r"(\d+(?:\.\d+)?)\s*(kg|kilograms?)?", message, re.IGNORECASE)
-    if weight_match:
-        data["weight"] = float(weight_match.group(1))
-
-    # Type
-    type_match = re.search(r"(type|parcel|item)\s*[:\-]?\s*([a-zA-Z\s]+)", message, re.IGNORECASE)
-    if type_match:
-        data["type"] = type_match.group(2).strip()
-
-    return data if data else None
 
 
 if __name__ == "__main__":
