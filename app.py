@@ -21,7 +21,7 @@ def whatsapp_webhook():
     incoming_msg = request.form.get("Body", "").strip()
     sender = request.form.get("From")
 
-    # If first message from user, initialize session
+    # If user not in session, treat as new user
     if sender not in user_data:
         user_data[sender] = {}
         welcome_msg = (
@@ -35,27 +35,31 @@ def whatsapp_webhook():
         send_whatsapp(sender, welcome_msg)
         return "OK", 200
 
-    # Check if user is booking
-    book_match = re.search(r"book with\s+(.+)", incoming_msg, re.IGNORECASE)
-    if book_match and "pickup" in user_data[sender] and "delivery" in user_data[sender] and "weight" in user_data[sender]:
+    # Check if user confirms booking
+    book_match = re.search(r"book with\s+(.+)", incoming_msg.lower())
+    if (
+        book_match and 
+        all(k in user_data[sender] for k in ["pickup", "delivery", "weight"])
+    ):
         courier_name = book_match.group(1).strip()
         details = user_data[sender]
         confirmation = (
             f"✅ Booking confirmed!\n\n"
-            f"You are sending a parcel from *{details['pickup']}* to *{details['delivery']}* "
-            f"weighing *{details['weight']} kg* via *{courier_name}*.\n\n"
+            f"You are sending a parcel from *{details.get('pickup', '')}* to *{details.get('delivery', '')}* "
+            f"weighing *{details.get('weight', '')} kg* via *{courier_name}*.\n\n"
             f"📦 Thank you for choosing EasyParcel!"
         )
         send_whatsapp(sender, confirmation)
-        user_data.pop(sender, None)  # clear session after booking
+        # Clear session after booking so next message is treated fresh
+        user_data.pop(sender, None)
         return "OK", 200
 
-    # Parse current message
-    parsed = parse_message(incoming_msg)
+    # Parse message for data fields
+    parsed = parse_message(incoming_msg) or {}
     for key, value in parsed.items():
         user_data[sender][key] = value
 
-    # Determine missing required fields (parcel type optional)
+    # Check for missing required fields (parcel type optional)
     required_fields = ["pickup", "delivery", "weight"]
     missing = [f for f in required_fields if f not in user_data[sender]]
 
@@ -64,7 +68,7 @@ def whatsapp_webhook():
         send_whatsapp(sender, ask_msg)
         return "OK", 200
 
-    # All required details present → get courier rates
+    # All required details present → show courier options
     details = user_data[sender]
     options = get_rates(details)
     reply = "📦 Available Courier Options:\n"
