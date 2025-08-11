@@ -7,20 +7,19 @@ load_dotenv()
 # Example list of cities your courier partners serve
 # You can expand this list as needed
 serviceable_cities = [
-    "Mumbai",
-    "Delhi",
-    "Bengaluru",
-    "Chennai",
-    "Kolkata",
-    "Pune",
-    "Hyderabad",
-    "Delhi",
-    "Ahmedabad",
-    "Jaipur",
-    "Lucknow",
-    "Surat",
-    "Indore",
-    "Nagpur"
+    "Mumbai","mumbai"
+    "Delhi","delhi"
+    "Bengaluru","bglr","bengaluru"
+    "Chennai","chennai"
+    "Kolkata","kolkata"
+    "Pune","pune"
+    "Hyderabad","hyderabad"
+    "Ahmedabad","ahmedabad"
+    "Jaipur","jaipur"
+    "Lucknow","lucknow"
+    "Surat","surat"
+    "Indore","indore"
+    "Nagpur","nagpur"
 ]
 
 def get_rates(data):
