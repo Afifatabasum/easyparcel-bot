@@ -88,8 +88,15 @@ def parse_message(msg):
         print("Parser error:", e)
         return {}
 
+
 def looks_like_location(text):
     """Check if text looks like a valid location"""
     if not text:
         return False
     if len(text) < 3:
+        return False
+    # Simple heuristic: location should contain letters (not just numbers or symbols)
+    if not re.search(r"[a-zA-Z]", text):
+        return False
+    return True
+
