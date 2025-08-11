@@ -113,4 +113,4 @@ def whatsapp_webhook():
             f"From: *{details.get('pickup')}*\n"
             f"To: *{details.get('delivery')}*\n"
             f"Weight: *{details.get('weight')} kg*\n"
-            f"Courier: *{courier_name}*\n\n"
+            f"Courier: *{courier_name}*\n\n")
